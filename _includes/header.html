@@ -1,0 +1,73 @@
+<a class="sr-only sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">{{ t.header.skip_link }}</a>
+<div id="disclaimer">
+  {% include components/dev-disclaimer.html %}
+</div>
+
+<header role="banner">
+  <div class="navbar-brand-container">
+    <div class="container">
+
+      <a class="navbar-brand navbar-brand-nsa" href="{{ site.baseurl }}{{ baseurl_folder }}/" id="home">
+        <img src="{{ site.baseurl }}/assets/img/NSA_logo.png" alt="{{ t.general.sdg }} - {{ t.header.tag_line }}" />
+      </a>
+      <a class="navbar-brand navbar-brand-sdg" href="{{ site.baseurl }}{{ baseurl_folder }}/" id="home">
+        <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ t.general.sdg }} - {{ t.header.tag_line }}" />
+      </a>
+
+
+    </div>
+  </div>
+  <div class="navbar-menu-container">
+    <div class="container">
+
+
+    <!--div class='hidden visible-xs float-right'>
+      <ul id='accessibility-nav' class='contrast-switcher'></ul>
+      {%- if site.languages.size > 1 -%}
+      <div class="language-toggle-mobile">
+        {% include components/language-toggle.html %}
+      </div>
+      {%- endif -%}
+    </div -->
+
+      <nav class="navbar navbar-default" id="main-nav">
+
+        <ul class="top-level">
+          <li><span data-target="menu">{{ t.menu.menu }}</span></li>
+          <li><span data-target="search">{{ t.search.search }}</span></li>
+        </ul>
+
+        <div class="navbar-search-container">
+          {% include search.html %}
+        </div>
+
+        <ul class="nav navbar-nav menu-target contrast-switcher" id="menu">
+          {%- if site.menu -%}
+            {%- for item in site.menu -%}
+
+              {% if page.url == item.path %}
+                <li class="nav-link active">
+                  <a href="{{ site.baseurl }}{{ baseurl_folder }}{{ item.path }}">{{ item.translation_key | t }}</a>
+                </li>
+              {% else %}
+
+                <li class="nav-link">
+                  <a href="{{ site.baseurl }}{{ baseurl_folder }}{{ item.path }}">{{ item.translation_key | t }} </a>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          <!--{%- if site.languages.size > 1 -%}
+          <li>
+            {% include components/language-toggle.html %}
+          </li>
+          {%- endif -%}-->
+        </ul>
+
+
+
+      </nav>
+    </div>
+  </div>
+
+</header>

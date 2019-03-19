@@ -1,3 +1,211 @@
 ---
 # Enter any custom Sass in this file.
 ---
+
+/* --- CONTENTS---*/
+// Imports
+// Variables
+// General (Site-Wide)
+// Header
+// FrontPage
+// Footer
+
+/* --- IMPORTS---*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+
+/* --- VARIABLES ---*/
+$color_primary:#1C4698; //blue
+$color_secondary:#17B0ED; //sky blue
+$color_tertiary:#213078; //dark blue
+$color_delta:#000066; //navy blue
+$color_light:#fff; //white
+$color_mid_light:#F5F7FA; //light gray
+
+$color_footer_menu_text_color: $color_light;
+$color_footer_text_color: #5d7082;//#6786a5;
+$color_footer_link_color: $color_footer_text_color;
+
+$font_open_sans:'Open Sans', sans-serif;
+;
+
+/* --- GENERAL ---*/
+body{
+  background: $color_delta;
+  font-family: $font_open_sans;
+}
+
+a{
+  text-decoration: none;
+}
+
+.content-container{
+  width: 100%;
+  padding: 20px 0;
+}
+.center{
+  text-align: center;
+}
+.bg-light{
+  background: $color_light;
+}
+
+.text-thin{
+  //font-family: $font_open_sans;
+  font-weight: 100;
+}
+/* --- HEADER ---*/
+
+header{
+  width: 100%;
+  background: #fff;
+
+  .navbar-brand-container, .navbar-menu-container{
+    width: 100%;
+  }
+
+  //header section with logos
+  .navbar-brand-container{
+    padding: 5px auto;
+
+    .container{min-height: 100px;}
+
+    .navbar-brand-nsa{
+      float: right;
+      max-width: 70px;
+
+      img{
+        width: 70px;
+      }
+    }
+
+    .navbar-brand-sdg img{
+      width: 120%;
+      margin-top: 11px;
+    }
+  }//.navbar-brand-container
+
+  //header section with menu
+  .navbar-menu-container{
+    background: $color_primary;
+    border-bottom: 3px solid $color_secondary;
+
+    .navbar.navbar-default{
+      display: block;
+      float: left;
+      width: 100%;
+    }
+
+    .navbar{
+      margin-bottom: 0;
+      min-height: 50px;
+    }
+    .container{
+      min-height: auto;
+    }
+
+    .navbar ul.navbar-nav{
+      float: left;
+      margin-top:0px;
+
+      li{
+
+
+        a {
+          padding: 13px;
+          margin: 2px 8px;
+          color: #ffffff;
+          text-transform: capitalize;
+        }
+      }
+
+      li.active{
+        background: $color_secondary;
+
+        a{
+          border-bottom: none;
+        }
+      }
+
+      li.contrast{
+        display: none;
+      }
+
+    }
+
+  }//.navbar-menu-container
+
+
+  //search in navbar. This search requires navbar class
+  .navbar-search-container{
+    margin: 0;
+    min-height: auto;
+    float: right;
+    padding-top: 3px;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 769px){
+    .navbar-search-container #search {
+       margin-top: 0;
+    }
+  }
+
+}//header
+
+/* --- FRONT-PAGE ---*/
+
+
+
+
+/* --- FOOTER ---*/
+.footer-container,footer{
+  width: 100%;
+  background: none;
+  //margin-top: 50px;
+  position: relative;
+  background: $color_delta;
+
+  height: auto;
+
+  .footer-nav, .footer-bottom{
+    width: 100%;
+  }
+
+  .footer-nav{
+    background: $color_tertiary;
+
+
+    .nsa-app-logo{
+      display: block;
+      margin-top: 10px;
+    }
+
+    .footer-menu{
+      text-align: right;
+      padding-top:26px;
+
+      a{
+        text-decoration: none;
+        padding: 5px 10px;
+        color: $color_footer_menu_text_color;
+      }
+    }
+
+  }
+  .footer-bottom{
+    text-align: center;
+
+    .footer-copyright{
+      padding: 20px 10px;
+      color: $color_footer_text_color;
+
+      a{
+        color: $color_footer_text_color;
+
+        &:hover{
+          color: $color_footer_menu_text_color;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,90 @@
+{%- include multilingual.html -%}
+{% include head.html %}
+{% include header.html %}
+
+<section class="carousel" style="background-image: url('{{ site.baseurl }}/assets/img/carousel/img1.jpg')">
+
+
+    <!--div id="carousel-example" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example" data-slide-to="1"></li>
+            <li data-target="#carousel-example" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href="#"><img src="http://placekitten.com/1600/600" /></a>
+                <div class="csarousel-caption">
+                    <h3>Meow</h3>
+                    <p>Just Kitten Around</p>
+                </div>
+            </div>
+            <div class="item">
+                <a href="#"><img src="http://placekitten.com/1600/600" /></a>
+                <div class="carousel-caption">
+                    <h3>Meow</h3>
+                    <p>Just Kitten Around</p>
+                </div>
+            </div>
+            <div class="item">
+                <a href="#"><img src="http://placekitten.com/1600/600" /></a>
+                <div class="carousel-caption">
+                    <h3>Meow</h3>
+                    <p>Just Kitten Around</p>
+                </div>
+            </div>
+        </div>
+
+        <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>-->
+
+</section>
+<div class="content-container bg-light">
+    <div id="main-content" class="container goal-tiles" role="main">
+
+        {% assign country_name = site.country.name | t %}
+        <!--h1>{{ t.frontpage.heading | replace: '%name', country_name }}</h1-->
+        <dvi class="center">
+            <h1 class="text-thin">Sustainable Development Goals </h1>
+        </dvi>
+        <div class="intro-text">
+            <p>
+                Welcome to the official SDG dissemination platform of the Namibia, providing information on the development and implementation of an indicator framework for the follow up and review of the 2030 Agenda for Sustainable Development. It is maintained by the <a href="https://nsa.org.na/">Namibia Statistics Agency </a>.
+            </p>
+            <p>
+                A short write up on the SDG, the indicators and initatives from NSA, basically, the purpose of this site. Text from here on out ivamus eu tellus eleifend, iaculis orci non, sollicitudin orci.
+            </p>
+        </div>
+
+
+        {%- assign goals = site.goals | where: 'language', current_language -%}
+        {% for goal in goals %}
+        {%- assign goal_number = goal.sdg_goal -%}
+        {%- assign default_goal = site.data.translations[default_language].global_goals[goal_number] -%}
+        {%- assign translated_goal = t.global_goals[goal_number] -%}
+
+        {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
+        <div class="col-xs-4 col-md-2">
+            <a href="./{{ default_goal.short | slugify }}/">
+                <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" id="goal-{{ goal_number }}" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" />
+            </a>
+        </div>
+        {% cycle 'end row' : '', '', '', '', '', '</div>' %}
+        {% endfor %}
+        <div class="col-xs-4 col-md-2">
+            <img src="{{ site.goal_image_base }}/{{ current_language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
+        </div>
+
+        <p>{{ t.frontpage.instructions | replace_first: '%before_link', '<span style="display:none" id="jump-to-search"><a href="javascript:void(0)">' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name }}</p>
+
+    </div>
+    </div>
+</div>
+
+{% include footer.html %}
